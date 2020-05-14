@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+// The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
+
+const bottomContainerHeight = 80.0;
+const bottomContainerColor = Color(0xFFEB1555);
+const activeCardColor = Color(0xFF1D1E33);
 
 class InputPage extends StatefulWidget {
   @override
@@ -24,12 +29,12 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF1D1E33),
+                    cardColor: activeCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF1D1E33),
+                    cardColor: activeCardColor,
                   ),
                 ),
               ],
@@ -37,7 +42,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              cardColor: Color(0xFF1D1E33),
+              cardColor: activeCardColor,
             ),
           ),
           Expanded(
@@ -45,16 +50,24 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF1D1E33),
+                    cardColor: activeCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: Color(0xFF1D1E33),
+                    cardColor: activeCardColor,
                   ),
                 ),
               ],
             ),
+          ),
+          Container(
+            color: bottomContainerColor,
+            margin: EdgeInsets.only(
+              top: 10.0,
+            ),
+            height: bottomContainerHeight,
+            width: double.infinity,
           ),
         ],
       ),
