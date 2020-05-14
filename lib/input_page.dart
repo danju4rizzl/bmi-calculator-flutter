@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'icon_content.dart';
+import 'reusable_card.dart';
 
 // The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
@@ -14,13 +17,13 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
 // 0xFF1D1E33
-  // primaryAppColor() => Color(0xFF1D1E33);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appName),
+        title: Center(
+          child: Text(appName),
+        ),
       ),
       body: Column(
         children: <Widget>[
@@ -30,11 +33,19 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     cardColor: activeCardColor,
+                    cardChild: IconContent(
+                      label: 'male',
+                      icon: FontAwesomeIcons.mars,
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     cardColor: activeCardColor,
+                    cardChild: IconContent(
+                      icon: FontAwesomeIcons.venus,
+                      label: 'Female',
+                    ),
                   ),
                 ),
               ],
@@ -70,22 +81,6 @@ class _InputPageState extends State<InputPage> {
             width: double.infinity,
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ReusableCard extends StatelessWidget {
-  ReusableCard({@required this.cardColor});
-  final Color cardColor;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      decoration: BoxDecoration(
-        color: cardColor,
-        borderRadius: BorderRadius.circular(10.0),
       ),
     );
   }
