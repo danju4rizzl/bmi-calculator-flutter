@@ -2,15 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
+import 'constance.dart';
 
 // The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
-
-// Default values
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xFFEB1555);
-const activeCardColor = Color(0xFF1D1E33);
-const inActiveCardColor = Color(0xFF111328);
 
 // Enums
 enum GenderType { male, female }
@@ -44,8 +39,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     cardColor: selectedGender == GenderType.male
-                        ? activeCardColor
-                        : inActiveCardColor,
+                        ? kActiveCardColor
+                        : kInActiveCardColor,
                     cardChild: IconContent(
                       label: 'male',
                       icon: FontAwesomeIcons.mars,
@@ -60,8 +55,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     cardColor: selectedGender == GenderType.female
-                        ? activeCardColor
-                        : inActiveCardColor,
+                        ? kActiveCardColor
+                        : kInActiveCardColor,
                     cardChild: IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'Female',
@@ -73,7 +68,15 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReusableCard(
-              cardColor: activeCardColor,
+              cardColor: kActiveCardColor,
+              cardChild: Column(
+                children: <Widget>[
+                  Text(
+                    'Height',
+                    style: kLabelTextStyle,
+                  ),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -81,23 +84,23 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReusableCard(
-                    cardColor: activeCardColor,
+                    cardColor: kActiveCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
-                    cardColor: activeCardColor,
+                    cardColor: kActiveCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             margin: EdgeInsets.only(
               top: 10.0,
             ),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
             width: double.infinity,
           ),
         ],
