@@ -6,10 +6,14 @@ import 'reusable_card.dart';
 // The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
 
+// Default values
 const bottomContainerHeight = 80.0;
 const bottomContainerColor = Color(0xFFEB1555);
 const activeCardColor = Color(0xFF1D1E33);
 const inActiveCardColor = Color(0xFF111328);
+
+// Enums
+enum GenderType { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -21,8 +25,9 @@ class _InputPageState extends State<InputPage> {
   Color feMaleCardColor = inActiveCardColor;
 
 // 1 = male and 2 = female;
-  void updateColor(int gender) {
-    if (gender == 1) {
+  void updateColor(GenderType selectedGender) {
+    if (selectedGender == GenderType.male) {
+      print(GenderType.male);
       if (maleCardColor == inActiveCardColor) {
         maleCardColor = activeCardColor;
         feMaleCardColor = inActiveCardColor;
@@ -30,7 +35,8 @@ class _InputPageState extends State<InputPage> {
         maleCardColor = inActiveCardColor;
       }
     }
-    if (gender == 2) {
+    if (selectedGender == GenderType.female) {
+      print(GenderType.female);
       if (feMaleCardColor == inActiveCardColor) {
         maleCardColor = inActiveCardColor;
         feMaleCardColor = activeCardColor;
@@ -57,9 +63,8 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(1);
+                        updateColor(GenderType.male);
                       });
-                      print('Male card was pressed!');
                     },
                     child: ReusableCard(
                       cardColor: maleCardColor,
@@ -74,9 +79,8 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updateColor(2);
+                        updateColor(GenderType.female);
                       });
-                      print('Female card was pressed!');
                     },
                     child: ReusableCard(
                       cardColor: feMaleCardColor,
