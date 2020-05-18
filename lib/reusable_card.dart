@@ -21,9 +21,3 @@ class ReusableCard extends StatelessWidget {
     );
   }
 }
-
-// onTap: () {
-//   setState(() {
-//     selectedGender = GenderType.male;
-//   });
-// },
