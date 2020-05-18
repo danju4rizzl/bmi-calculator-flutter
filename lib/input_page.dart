@@ -17,7 +17,7 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   GenderType selectedGender;
-
+  int userHeight = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,6 +27,7 @@ class _InputPageState extends State<InputPage> {
         ),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             child: Row(
@@ -70,10 +71,41 @@ class _InputPageState extends State<InputPage> {
             child: ReusableCard(
               cardColor: kActiveCardColor,
               cardChild: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'Height',
+                    'Height'.toUpperCase(),
                     style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        userHeight.toString(),
+                        style: kBoldTextStyle,
+                      ),
+                      SizedBox(
+                        width: 5.0,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: userHeight.toDouble(),
+                    min: kSliderMin,
+                    max: kSliderMax,
+                    activeColor: kSliderColorActive,
+                    inactiveColor: kSliderColorInActive,
+                    onChanged: (double newValue) {
+                      setState(() {
+                        userHeight = newValue.round();
+                      });
+                    },
                   ),
                 ],
               ),
