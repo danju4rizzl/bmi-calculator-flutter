@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constance.dart';
+import 'package:bmi_calculator/constance.dart';
 
 const iconSize = 80.0;
 

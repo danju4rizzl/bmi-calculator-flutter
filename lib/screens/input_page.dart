@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constance.dart';
+import 'package:bmi_calculator/constance.dart';
+import 'package:bmi_calculator/components/icon_content.dart';
+import 'package:bmi_calculator/components/reusable_card.dart';
+import 'package:bmi_calculator/components/change_route_button.dart';
+import 'package:bmi_calculator/components/round_icon_button.dart';
 
 // The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
@@ -18,7 +20,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   GenderType selectedGender;
   int userHeight = 180;
-  int userWeight = 20;
+  int userWeight = 60;
   int userAge = 2;
   @override
   Widget build(BuildContext context) {
@@ -211,35 +213,12 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(
-              top: 10.0,
-            ),
-            height: kBottomContainerHeight,
-            width: double.infinity,
-          ),
+          ChangeRouteButton(
+            routeButtonLabel: 'calculate',
+            goto: '/results',
+          )
         ],
       ),
-    );
-  }
-}
-
-class RoundIconButton extends StatelessWidget {
-  RoundIconButton({@required this.icon, @required this.onPress});
-
-  final IconData icon;
-  final Function onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: onPress,
-      elevation: 0.0,
-      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
     );
   }
 }
