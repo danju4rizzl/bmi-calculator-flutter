@@ -22,6 +22,7 @@ class _InputPageState extends State<InputPage> {
   int userHeight = 180;
   int userWeight = 60;
   int userAge = 2;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -215,7 +216,9 @@ class _InputPageState extends State<InputPage> {
           ),
           ChangeRouteButton(
             routeButtonLabel: 'calculate',
-            goto: '/results',
+            onTap: () {
+              Navigator.pushNamed(context, '/results');
+            },
           )
         ],
       ),

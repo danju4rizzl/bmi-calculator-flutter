@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:bmi_calculator/constance.dart';
 
 class ChangeRouteButton extends StatelessWidget {
-  ChangeRouteButton({@required this.goto, @required this.routeButtonLabel});
+  ChangeRouteButton({@required this.onTap, @required this.routeButtonLabel});
 
-  final String goto;
+  final Function onTap;
   final String routeButtonLabel;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, goto);
-      },
+      onTap: onTap,
       child: Container(
         color: kBottomContainerColor,
         margin: EdgeInsets.only(

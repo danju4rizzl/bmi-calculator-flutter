@@ -51,7 +51,9 @@ class ResultsPage extends StatelessWidget {
             ),
           ),
           ChangeRouteButton(
-            goto: '/',
+            onTap: () {
+              Navigator.pushNamed(context, '/');
+            },
             routeButtonLabel: 're-calculate',
           ),
         ],
