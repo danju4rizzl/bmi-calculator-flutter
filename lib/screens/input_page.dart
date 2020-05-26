@@ -1,3 +1,4 @@
+import 'package:bmi_calculator/calculatorBrain.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:bmi_calculator/constance.dart';
@@ -5,6 +6,7 @@ import 'package:bmi_calculator/components/icon_content.dart';
 import 'package:bmi_calculator/components/reusable_card.dart';
 import 'package:bmi_calculator/components/change_route_button.dart';
 import 'package:bmi_calculator/components/round_icon_button.dart';
+import 'package:bmi_calculator/screens/result_page.dart';
 
 // The appName will always be as a final
 final appName = 'bim calculator'.toUpperCase();
@@ -217,7 +219,18 @@ class _InputPageState extends State<InputPage> {
           ChangeRouteButton(
             routeButtonLabel: 'calculate',
             onTap: () {
-              Navigator.pushNamed(context, '/results');
+              CalculatorBrain calc = CalculatorBrain(
+                  heightOfUser: userHeight, weightOfUser: userWeight);
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ResultsPage(
+                          bmiResult: calc.calculateBMI(),
+                          bmiStatus: calc.getStatusForUser(),
+                          bmiText: calc.getResultTextForUser(),
+                        )),
+              );
             },
           )
         ],
